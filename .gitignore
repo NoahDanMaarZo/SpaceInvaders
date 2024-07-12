@@ -4,3 +4,7 @@ SpaceInvaders/.config/
 SpaceInvaders/.vs/
 
 SpaceInvaders/obj/
+SpaceInvaders/Content/obj/
+
+SpaceInvaders/bin/
+SpaceInvaders/Content/bin/
