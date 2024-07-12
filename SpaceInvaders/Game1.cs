@@ -4,12 +4,14 @@ using Microsoft.Xna.Framework.Input;
 
 namespace SpaceInvaders
 {
-    public class Game1 : Game
+    public class SpaceInvaders : Game
     {
         private GraphicsDeviceManager _graphics;
         private SpriteBatch _spriteBatch;
 
-        public Game1()
+        public static GameSettings Settings;
+
+        public SpaceInvaders()
         {
             _graphics = new GraphicsDeviceManager(this);
             Content.RootDirectory = "Content";
@@ -18,7 +20,7 @@ namespace SpaceInvaders
 
         protected override void Initialize()
         {
-            // TODO: Add your initialization logic here
+            Settings = new GameSettings();
 
             base.Initialize();
         }
@@ -27,7 +29,7 @@ namespace SpaceInvaders
         {
             _spriteBatch = new SpriteBatch(GraphicsDevice);
 
-            // TODO: use this.Content to load your game content here
+            Settings.SpriteSheetTexture = Content.Load<Texture2D>("Textures/SpaceAnimation");
         }
 
         protected override void Update(GameTime gameTime)
@@ -44,7 +46,9 @@ namespace SpaceInvaders
         {
             GraphicsDevice.Clear(Color.CornflowerBlue);
 
-            // TODO: Add your drawing code here
+            _spriteBatch.Begin();
+            _spriteBatch.Draw(Settings.SpriteSheetTexture, Vector2.Zero, Color.White );
+            _spriteBatch.End();
 
             base.Draw(gameTime);
         }
