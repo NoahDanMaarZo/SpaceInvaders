@@ -1,6 +1,7 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
+using SpaceInvaders.Screens;
 
 namespace SpaceInvaders
 {
@@ -9,7 +10,7 @@ namespace SpaceInvaders
         private GraphicsDeviceManager _graphics;
         private SpriteBatch _spriteBatch;
 
-        public static GameSettings Settings;
+        // static GameSettings Settings;
 
         public SpaceInvaders()
         {
@@ -20,8 +21,6 @@ namespace SpaceInvaders
 
         protected override void Initialize()
         {
-            Settings = new GameSettings();
-
             base.Initialize();
         }
 
@@ -29,7 +28,13 @@ namespace SpaceInvaders
         {
             _spriteBatch = new SpriteBatch(GraphicsDevice);
 
-            Settings.SpriteSheetTexture = Content.Load<Texture2D>("Textures/SpaceAnimation");
+            GameSettings.SpriteSheetTexture = Content.Load<Texture2D>("Textures/SpaceAnimation");
+
+            GameSettings.PlayScreen.LoadContent();
+            GameSettings.StartScreen.LoadContent();
+            GameSettings.GameOverScreen.LoadContent();
+
+            GameSettings.ActiveScreen = GameSettings.PlayScreen;
         }
 
         protected override void Update(GameTime gameTime)
@@ -39,6 +44,8 @@ namespace SpaceInvaders
 
             // TODO: Add your update logic here
 
+            GameSettings.ActiveScreen.Update(gameTime);
+
             base.Update(gameTime);
         }
 
@@ -47,7 +54,7 @@ namespace SpaceInvaders
             GraphicsDevice.Clear(Color.CornflowerBlue);
 
             _spriteBatch.Begin();
-            _spriteBatch.Draw(Settings.SpriteSheetTexture, Vector2.Zero, Color.White );
+            GameSettings.ActiveScreen.Draw(_spriteBatch);
             _spriteBatch.End();
 
             base.Draw(gameTime);

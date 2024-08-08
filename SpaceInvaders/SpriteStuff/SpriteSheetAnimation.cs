@@ -1,13 +1,7 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using SpaceInvaders.SpriteStuff;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace AvoidTetris
+namespace SpaceInvaders.SpriteStuff
 {
     public class SpriteSheetAnimation : SpriteSheet
     {

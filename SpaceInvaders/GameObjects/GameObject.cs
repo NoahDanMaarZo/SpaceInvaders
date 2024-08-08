@@ -19,6 +19,7 @@ namespace SpaceInvaders.GameObjects
             Scale = Vector2.One;
             IsActive = true;
         }
+
         public virtual void Update(GameTime gameTime)
         {
             if (IsActive)

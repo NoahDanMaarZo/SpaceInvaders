@@ -1,6 +1,6 @@
 ﻿using Microsoft.Xna.Framework.Graphics;
 using SpaceInvaders.Screens;
-using System.Numerics;
+using System.Collections.Generic;
 
 namespace SpaceInvaders
 {
@@ -18,15 +18,13 @@ namespace SpaceInvaders
         public static float TurretSpeed => 1f;
         public static float MissileSpeed => 1f;
 
-        StartScreen StartScreen;
+        public static StartScreen StartScreen = new StartScreen();
+        public static PlayScreen PlayScreen = new PlayScreen();
+        public static GameOverScreen GameOverScreen = new GameOverScreen();
 
-        PlayScreen PlayScreen;
+        public static Screen ActiveScreen = null;
 
-        GameOverScreen GameOverScreen;
-
-        public Screen ActiveScreen;
-
-        public Texture2D SpriteSheetTexture;
+        public static Texture2D SpriteSheetTexture = null;
 
     }
 }
