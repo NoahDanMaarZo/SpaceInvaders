@@ -8,12 +8,9 @@ namespace SpaceInvaders.Screens
     public abstract class Screen
     {
         public List<GameObject> ScreenObjects;
-
-        public abstract List<GameObject> CreateScreenObjects();
-
         public virtual void LoadContent()
         {
-            ScreenObjects = CreateScreenObjects();
+            List<GameObject> ScreenObjects = new List<GameObject>();
         }
 
         public virtual void Update(GameTime gameTime)

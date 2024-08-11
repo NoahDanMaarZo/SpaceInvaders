@@ -10,7 +10,7 @@ namespace SpaceInvaders
         const int ScreenWidth = 1200;
         const int ScreenHeight = 800;
 
-        public static float InvaderSize => 10f;
+        public static float InvaderSize => 2f;
         public static float TurretSize => 10f;
         public static float MissileSize => 10f;
 

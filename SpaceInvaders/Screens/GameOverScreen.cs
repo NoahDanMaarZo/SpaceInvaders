@@ -5,9 +5,6 @@ namespace SpaceInvaders.Screens
 {
     public class GameOverScreen : Screen
     {
-        public override List<GameObject> CreateScreenObjects()
-        {
-            return new List<GameObject>();
-        }
+
     }
 }

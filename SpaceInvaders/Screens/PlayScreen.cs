@@ -7,15 +7,30 @@ namespace SpaceInvaders.Screens
 {
     public class PlayScreen : Screen
     {
-        public override List<GameObject> CreateScreenObjects()
+        public override void LoadContent()
         {
-            var enemySpriteSheet = new SpriteSheet(GameSettings.SpriteSheetTexture, new Rectangle(0,0,18,10));
+            ScreenObjects = new List<GameObject>();
 
-            List<GameObject> list = new List<GameObject>();
-            
-            list.Add(new Invader(enemySpriteSheet));
+            CreateInvaders(new Vector2(30, 30));
+            CreateInvaders(new Vector2(300, 30));
+        }
 
-            return list;
+        private void CreateInvaders(Vector2 blockPosition)
+        {
+            var enemySpriteSheet = new SpriteSheet(GameSettings.SpriteSheetTexture, new Rectangle(0, 0, 18, 10));
+
+            for (int i = 0; i < 3; i++)
+            {
+                for (int j = 0; j < 3; j++)
+                {
+                    GameObject newInvader = new Invader(enemySpriteSheet,
+                        blockPosition,
+                        new Vector2(GameSettings.InvaderSize));
+                    newInvader.Position.X += i * 2 * newInvader.GetPixelSize().X;
+                    newInvader.Position.Y += j * 2 * newInvader.GetPixelSize().Y;
+                    ScreenObjects.Add(newInvader);
+                }
+            }
         }
     }
 }

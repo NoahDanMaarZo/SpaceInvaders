@@ -12,12 +12,17 @@ namespace SpaceInvaders.GameObjects
         public Vector2 Scale;
         public bool IsActive;
 
-        protected GameObject(SpriteSheet visualisation)
+        protected GameObject(SpriteSheet visualisation, Vector2 position, Vector2 scale)
         {
             Visualisation = visualisation;
-            Position = Vector2.Zero;
-            Scale = Vector2.One;
+            Position = position;
+            Scale = scale;
             IsActive = true;
+        }
+
+        public Point GetPixelSize()
+        {
+            return Visualisation.CalculateDestinationRectangle(Position, Scale).Size;
         }
 
         public virtual void Update(GameTime gameTime)

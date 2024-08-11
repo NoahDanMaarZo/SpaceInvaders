@@ -1,5 +1,6 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using SharpDX.Direct2D1.Effects;
 
 namespace SpaceInvaders.SpriteStuff
 {
@@ -21,16 +22,17 @@ namespace SpaceInvaders.SpriteStuff
             return _sourceRect;
         }
 
-        private Rectangle CalculateDestinationRect(Rectangle sourceRect, Vector2 scale)
-        {
-            var size = sourceRect.Size.ToVector2() * scale;
-            return new Rectangle(sourceRect.Location, size.ToPoint());
-        }
-
         public void Draw(SpriteBatch spriteBatch, Vector2 pos, Vector2 scale /*, float rot = (float)Math.PI*/)
         {
             var sourceRect = CalculateSourceRect();
-            spriteBatch.Draw(Texture, CalculateDestinationRect(sourceRect, scale), sourceRect, DisplayedColor);
+            var destinationRect = CalculateDestinationRectangle(pos, scale);
+
+            spriteBatch.Draw(Texture, destinationRect, sourceRect, DisplayedColor);
+        }
+
+        public Rectangle CalculateDestinationRectangle(Vector2 pos, Vector2 scale)
+        {
+            return new Rectangle(pos.ToPoint(), CalculateSourceRect().Size * scale.ToPoint());
         }
 
         public virtual void Update() { }
