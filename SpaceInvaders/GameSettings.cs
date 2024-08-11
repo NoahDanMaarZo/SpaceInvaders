@@ -7,8 +7,8 @@ namespace SpaceInvaders
 
     public class GameSettings
     {
-        const int ScreenWidth = 1200;
-        const int ScreenHeight = 800;
+        public const int ScreenWidth = 1200;
+        public const int ScreenHeight = 800;
 
         public static float InvaderSize => 2f;
         public static float TurretSize => 10f;
@@ -16,7 +16,7 @@ namespace SpaceInvaders
 
         public static float InvaderSpeed => 1f;
         public static float TurretSpeed => 1f;
-        public static float MissileSpeed => 1f;
+        public static float MissileSpeed => 2f;
 
         public static StartScreen StartScreen = new StartScreen();
         public static PlayScreen PlayScreen = new PlayScreen();

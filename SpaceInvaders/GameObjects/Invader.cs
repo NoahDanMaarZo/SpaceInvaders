@@ -6,9 +6,11 @@ namespace SpaceInvaders.GameObjects
 {
     internal class Invader : GameObject
     {
-        public Invader(SpriteSheet visualisation, Vector2 position, Vector2 scale) : base(visualisation, position, scale)
-        {
+        public Vector2 Velocity;
 
+        public Invader(SpriteSheet visualisation, Vector2 position, Vector2 scale, Vector2 velocity) : base(visualisation, position, scale)
+        {
+            Velocity = velocity;
         }
 
         public override void Update(GameTime gameTime)

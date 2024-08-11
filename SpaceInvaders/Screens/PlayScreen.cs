@@ -22,17 +22,36 @@ namespace SpaceInvaders.Screens
                 new Rectangle(0, 0, 76, 10),
                 1, 4, 70, 0, 3);
 
-            for (int i = 0; i < 3; i++)
+            for (int column = 0; column < 3; column++)
             {
-                for (int j = 0; j < 3; j++)
+                for (int row = 0; row < 3; row++)
                 {
                     GameObject newInvader = new Invader(enemySpriteSheet,
                         blockPosition,
-                        new Vector2(GameSettings.InvaderSize));
-                    newInvader.Position.X += i * 2 * newInvader.GetPixelSize().X;
-                    newInvader.Position.Y += j * 2 * newInvader.GetPixelSize().Y;
+                        new Vector2(GameSettings.InvaderSize), 
+                        new Vector2(GameSettings.InvaderSpeed));
+                    newInvader.Position.X += column * 2 * newInvader.GetPixelSize().X;
+                    newInvader.Position.Y += row    * 2 * newInvader.GetPixelSize().Y;
                     ScreenObjects.Add(newInvader);
                 }
+            }
+        }
+
+        public override void Update(GameTime gameTime)
+        {
+            base.Update(gameTime);
+
+            // Loop over Invaders
+            foreach (var obj in ScreenObjects)
+            {
+                if (obj.GetType() == typeof(Invader) &&
+                obj.Position.X <= 0 || obj.Position.X + obj.GetPixelSize().X >= GameSettings.ScreenWidth)
+                {
+
+                    // Change speed/velocity
+                    break;
+                }
+
             }
         }
     }
