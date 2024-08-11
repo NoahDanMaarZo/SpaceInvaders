@@ -21,8 +21,8 @@ namespace SpaceInvaders.SpriteStuff
 
         public SpriteSheetAnimation(Texture2D texture, Rectangle sourceRect,
             int rows, int columns,
-            int spriteDelayInFrames, int startSpriteIndex,
-            int endSpriteIndex, Vector2 topLeftPosition, Vector2 size)
+            int spriteDelayInFrames, 
+            int startSpriteIndex, int endSpriteIndex)
             : base(texture, sourceRect)
         {
             Rows = rows;
@@ -34,8 +34,8 @@ namespace SpaceInvaders.SpriteStuff
 
         protected override Rectangle CalculateSourceRect()
         {
-            float spriteWidth = Texture.Width / (float)Columns;
-            float spriteHeight = Texture.Height / (float)Rows;
+            float spriteWidth = _sourceRect.Width / (float)Columns;
+            float spriteHeight = _sourceRect.Height / (float)Rows;
 
             int column = _currentSpriteIndex % Columns;
             int row = _currentSpriteIndex / Columns;

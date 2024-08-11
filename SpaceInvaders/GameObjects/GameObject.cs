@@ -25,6 +25,11 @@ namespace SpaceInvaders.GameObjects
             return Visualisation.CalculateDestinationRectangle(Position, Scale).Size;
         }
 
+        public Rectangle GetBoundingRect()
+        { 
+            return Visualisation.CalculateDestinationRectangle(Position, Scale);
+        }
+
         public virtual void Update(GameTime gameTime)
         {
             if (IsActive)

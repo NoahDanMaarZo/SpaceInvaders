@@ -7,7 +7,7 @@ namespace SpaceInvaders.SpriteStuff
     public class SpriteSheet
     {
         public Texture2D Texture { get; set; }
-        private Rectangle _sourceRect;
+        protected Rectangle _sourceRect;
         
         public Color DisplayedColor { get; set; } = Color.White;
 

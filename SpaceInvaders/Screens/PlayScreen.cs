@@ -17,7 +17,10 @@ namespace SpaceInvaders.Screens
 
         private void CreateInvaders(Vector2 blockPosition)
         {
-            var enemySpriteSheet = new SpriteSheet(GameSettings.SpriteSheetTexture, new Rectangle(0, 0, 18, 10));
+            var enemySpriteSheet = new SpriteSheetAnimation(
+                GameSettings.SpriteSheetTexture, 
+                new Rectangle(0, 0, 76, 10),
+                1, 4, 70, 0, 3);
 
             for (int i = 0; i < 3; i++)
             {
