@@ -32,6 +32,7 @@ namespace SpaceInvaders.GameObjects
 
             }
 
+            Position.Y += 2;
         }
     }
 }

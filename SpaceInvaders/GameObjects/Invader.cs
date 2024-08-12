@@ -1,4 +1,5 @@
 ﻿using Microsoft.Xna.Framework;
+using SpaceInvaders.Screens;
 using SpaceInvaders.SpriteStuff;
 using System.Windows.Forms;
 
@@ -13,11 +14,31 @@ namespace SpaceInvaders.GameObjects
             Velocity = velocity;
         }
 
+        public void CheckIfWeShouldTurnAround()
+        {
+            if (Position.X <= 0 || Position.X + GetPixelSize().X >= GameSettings.ScreenWidth)
+            {
+                //GameSettings.PlayScreen.InvadersShouldTurnAround
+                //SpaceInvaders.ShouldTurnAround = true;
+            }
+        }
+
+        private void TurnAround()
+        {
+            Velocity = -Velocity;
+            Position += Velocity;
+            Position.Y += GetPixelSize().Y;
+        }
+
         public override void Update(GameTime gameTime)
         {
             base.Update(gameTime);
-
-
+            CheckIfWeShouldTurnAround();
+            if (SpaceInvaders.ShouldTurnAround)
+            {
+                TurnAround();
+            }
+            Position += Velocity;
         }
     }
 }
