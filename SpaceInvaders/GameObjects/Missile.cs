@@ -24,15 +24,15 @@ namespace SpaceInvaders.GameObjects
                     || !gameObject.IsActive)
                     continue;
 
-                if (gameObject.GetType() == typeof(Invader))
+                if (gameObject.GetType() == typeof(Invader) 
+                    && gameObject.GetBoundingRect().Intersects(GetBoundingRect()))
                 {
                     gameObject.IsActive = false;
-                    IsActive = false;
+                    this.IsActive = false;
                 }
-
             }
 
-            Position.Y += 2;
+            Position.Y -= 2;
         }
     }
 }

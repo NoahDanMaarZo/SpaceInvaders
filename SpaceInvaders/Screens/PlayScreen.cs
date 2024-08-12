@@ -10,6 +10,7 @@ namespace SpaceInvaders.Screens
         public override void LoadContent()
         {
             ScreenObjects = new List<GameObject>();
+            NewScreenObjects = new List<GameObject>();
 
             CreateInvaders(new Vector2(1, 30));
             CreateInvaders(new Vector2(500, 30));
@@ -21,6 +22,13 @@ namespace SpaceInvaders.Screens
                 GameSettings.SpriteSheetTexture, 
                 new Rectangle(0, 0, 76, 10),
                 1, 4, 70, 0, 3);
+
+
+
+            var turretSpriteSheet = new SpriteSheetAnimation(
+                 GameSettings.SpriteSheetTexture,
+                 new Rectangle(0, 10, 57, 10),
+                 1, 3, 10, 0, 2);
 
             for (int column = 0; column < 3; column++)
             {
@@ -37,8 +45,13 @@ namespace SpaceInvaders.Screens
                 }
             }
 
-            //GameObject missile = new Missile(enemySpriteSheet, new Vector2(100, 1000), new Vector2(4));
-            //ScreenObjects.Add(missile);
+
+
+            GameObject turret = new Turret(turretSpriteSheet,
+                new Vector2(GameSettings.ScreenWidth/2, 
+                GameSettings.ScreenHeight-40), 
+                new Vector2(4));
+                ScreenObjects.Add(turret);
         }
 
         public override void Update(GameTime gameTime)
@@ -49,16 +62,19 @@ namespace SpaceInvaders.Screens
             // Loop over Invaders
             foreach (var obj in ScreenObjects)
             {
-                if (obj.GetType() == typeof(Invader) &&
-                obj.Position.X <= 0 || obj.Position.X + obj.GetPixelSize().X >= GameSettings.ScreenWidth)
+                if (obj.GetType() == typeof(Invader) && 
+                   (obj.Position.X <= 0 || obj.Position.X + obj.GetPixelSize().X >= GameSettings.ScreenWidth))
                 {
                     SpaceInvaders.ShouldTurnAround = true;
-
 
                     break;
                 }
 
             }
+        }
+        public override void SpawnMissileAt(Vector2 pos)
+        {
+            base.SpawnMissileAt(pos);
         }
     }
 }

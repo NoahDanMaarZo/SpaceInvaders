@@ -33,7 +33,7 @@ namespace SpaceInvaders.GameObjects
         public override void Update(GameTime gameTime)
         {
             base.Update(gameTime);
-            CheckIfWeShouldTurnAround();
+
             if (SpaceInvaders.ShouldTurnAround)
             {
                 TurnAround();

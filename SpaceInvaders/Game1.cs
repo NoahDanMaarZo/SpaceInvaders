@@ -11,6 +11,7 @@ namespace SpaceInvaders
         private SpriteBatch _spriteBatch;
 
         public static bool ShouldTurnAround;
+        public static KeyboardState previousKeyboardState;
 
 
         // static GameSettings Settings;
@@ -53,6 +54,7 @@ namespace SpaceInvaders
             // TODO: Add your update logic here
 
             GameSettings.ActiveScreen.Update(gameTime);
+            previousKeyboardState = Keyboard.GetState();
 
             base.Update(gameTime);
         }

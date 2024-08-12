@@ -15,8 +15,8 @@ namespace SpaceInvaders
         public static float MissileSize => 4f;
 
         public static float InvaderSpeed => 1f;
-        public static float TurretSpeed => 1f;
-        public static float MissileSpeed => 2f;
+        public static float TurretSpeed => 6f;
+        public static float MissileSpeed => 4f;
 
         public static StartScreen StartScreen = new StartScreen();
         public static PlayScreen PlayScreen = new PlayScreen();

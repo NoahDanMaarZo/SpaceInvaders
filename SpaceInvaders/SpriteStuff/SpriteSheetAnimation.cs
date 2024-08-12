@@ -40,8 +40,8 @@ namespace SpaceInvaders.SpriteStuff
             int column = _currentSpriteIndex % Columns;
             int row = _currentSpriteIndex / Columns;
 
-            float x = spriteWidth * column;
-            float y = spriteHeight * row;
+            float x = spriteWidth * column + _sourceRect.X;
+            float y = spriteHeight * row + _sourceRect.Y;
 
             return new Rectangle((int)x, (int)y, (int)spriteWidth, (int)spriteHeight);
         }
