@@ -58,7 +58,7 @@ namespace SpaceInvaders.Screens
             // Loop over Invaders
             foreach (var obj in ScreenObjects)
             {
-                if (obj.GetType() == typeof(Invader) && 
+                if (obj is Invader && 
                    (obj.Position.X <= 0 || obj.Position.X + obj.GetPixelSize().X >= GameSettings.ScreenWidth))
                 {
                     SpaceInvaders.ShouldTurnAround = true;
@@ -67,10 +67,23 @@ namespace SpaceInvaders.Screens
                 }
 
             }
+            
+            if (!ThereAreInvaders()) ScreenObjects.Clear();
+
         }
         public override void SpawnMissileAt(Vector2 pos)
         {
             base.SpawnMissileAt(pos);
         }
-    }
+
+        private bool ThereAreInvaders()
+        {
+            foreach(var obj in ScreenObjects)
+            {
+                if (obj is Invader) return true;
+            }
+            return false;
+        }
+
+}
 }

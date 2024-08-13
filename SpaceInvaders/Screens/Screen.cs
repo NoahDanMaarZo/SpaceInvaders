@@ -38,6 +38,7 @@ namespace SpaceInvaders.Screens
                 obj.Update(gameTime);
             }
             AddNewObjects();
+            DestroyObjects();
         }
         public virtual void Draw(SpriteBatch spriteBatch)
         {
@@ -63,6 +64,16 @@ namespace SpaceInvaders.Screens
                 ScreenObjects.Add(obj);
             }
             NewScreenObjects.Clear();
+        }
+        public virtual void DestroyObjects()
+        {
+            for (int i = ScreenObjects.Count-1; i > -1; i--)
+            {
+                if (!ScreenObjects[i].IsActive)
+                {
+                    ScreenObjects.Remove(ScreenObjects[i]);
+                }
+            }
         }
     }
 }

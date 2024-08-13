@@ -26,6 +26,7 @@ namespace SpaceInvaders.GameObjects
                     this.IsActive = false;
                 }
             }
+            
 
             Position.Y -= 2;
         }
