@@ -1,10 +1,5 @@
 ﻿using Microsoft.Xna.Framework;
 using SpaceInvaders.SpriteStuff;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace SpaceInvaders.GameObjects
 {
@@ -16,15 +11,15 @@ namespace SpaceInvaders.GameObjects
         }
         public override void Update(GameTime gameTime)
         {
+
             base.Update(gameTime);
 
             foreach (var gameObject in GameSettings.ActiveScreen.ScreenObjects)
             {
-                if (gameObject == this
-                    || !gameObject.IsActive)
+                if (gameObject == this || !gameObject.IsActive)
                     continue;
 
-                if (gameObject.GetType() == typeof(Invader) 
+                if (gameObject.GetType() == typeof(Invader)
                     && gameObject.GetBoundingRect().Intersects(GetBoundingRect()))
                 {
                     gameObject.IsActive = false;

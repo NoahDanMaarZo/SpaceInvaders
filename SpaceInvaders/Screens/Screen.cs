@@ -33,8 +33,8 @@ namespace SpaceInvaders.Screens
 
             foreach (GameObject obj in ScreenObjects)
             {
-                //if (!obj.IsActive)
-                //    continue;
+                if (!obj.IsActive)
+                    continue;
                 obj.Update(gameTime);
             }
             AddNewObjects();

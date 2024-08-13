@@ -14,26 +14,30 @@ namespace SpaceInvaders.Screens
 
             CreateInvaders(new Vector2(1, 30));
             CreateInvaders(new Vector2(500, 30));
+
+            var turretSpriteSheet = new SpriteSheetAnimation(
+                  GameSettings.SpriteSheetTexture,
+                  new Rectangle(0, 10, 57, 10),
+                  1, 3, 10, 0, 2);
+
+            GameObject turret = new Turret(turretSpriteSheet,
+              new Vector2(GameSettings.ScreenWidth / 2,
+             GameSettings.ScreenHeight - 40),
+              new Vector2(4));
+            ScreenObjects.Add(turret);
         }
 
         private void CreateInvaders(Vector2 blockPosition)
         {
-            var enemySpriteSheet = new SpriteSheetAnimation(
-                GameSettings.SpriteSheetTexture, 
-                new Rectangle(0, 0, 76, 10),
-                1, 4, 70, 0, 3);
-
-
-
-            var turretSpriteSheet = new SpriteSheetAnimation(
-                 GameSettings.SpriteSheetTexture,
-                 new Rectangle(0, 10, 57, 10),
-                 1, 3, 10, 0, 2);
-
             for (int column = 0; column < 3; column++)
             {
                 for (int row = 0; row < 3; row++)
                 {
+                    var enemySpriteSheet = new SpriteSheetAnimation(
+                          GameSettings.SpriteSheetTexture,
+                          new Rectangle(0, 0, 76, 10),
+                          1, 4, 4, 0, 3);
+
                     GameObject newInvader = new Invader(enemySpriteSheet,
                         blockPosition,
                         new Vector2(GameSettings.InvaderSize), 
@@ -44,14 +48,6 @@ namespace SpaceInvaders.Screens
 ;
                 }
             }
-
-
-
-            GameObject turret = new Turret(turretSpriteSheet,
-                new Vector2(GameSettings.ScreenWidth/2, 
-                GameSettings.ScreenHeight-40), 
-                new Vector2(4));
-                ScreenObjects.Add(turret);
         }
 
         public override void Update(GameTime gameTime)
