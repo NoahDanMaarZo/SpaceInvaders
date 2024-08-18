@@ -1,8 +1,8 @@
-using Microsoft.Xna.Framework;
+﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 namespace SpaceInvaders.SpriteStuff
 {
-    public class SpriteSheet
+    public class SpriteSheet : IVisualisation
     {
         public Texture2D Texture { get; set; }
         protected Rectangle _sourceRect;

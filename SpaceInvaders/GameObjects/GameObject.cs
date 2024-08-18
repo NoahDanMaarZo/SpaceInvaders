@@ -1,4 +1,4 @@
-using Microsoft.Xna.Framework;
+﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using SpaceInvaders.SpriteStuff;
 
@@ -6,22 +6,16 @@ namespace SpaceInvaders.GameObjects
 {
     public abstract class GameObject
     {
-        public SpriteSheet Visualisation;
+        public IVisualisation Visualisation;
+        public SpriteFont Font;
 
         public Vector2 Position;
         public Vector2 Scale;
         public bool IsActive;
 
-        protected GameObject(SpriteSheet visualisation, Vector2 position, Vector2 scale)
+        protected GameObject(IVisualisation visualisation, Vector2 position, Vector2 scale)
         {
             Visualisation = visualisation;
-            Position = position;
-            Scale = scale;
-            IsActive = true;
-        }
-        protected GameObject(SpriteFont visualisation, Vector2 position, Vector2 scale, string text)
-        {
-            Font = visualisation;
             Position = position;
             Scale = scale;
             IsActive = true;

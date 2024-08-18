@@ -1,4 +1,4 @@
-using SpaceInvaders.GameObjects;
+﻿using SpaceInvaders.GameObjects;
 using SpaceInvaders.SpriteStuff;
 using System.Collections.Generic;
 using Microsoft.Xna.Framework;
@@ -10,8 +10,6 @@ namespace SpaceInvaders.Screens
         public override void LoadContent()
         {
             base.LoadContent();
-            ScreenObjects = new List<GameObject>();
-            NewScreenObjects = new List<GameObject>();
 
             CreateInvaders(new Vector2(1, 30));
             CreateInvaders(new Vector2(500, 30));

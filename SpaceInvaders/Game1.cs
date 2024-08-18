@@ -1,4 +1,4 @@
-using Microsoft.Xna.Framework;
+﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using SpaceInvaders.Screens;
@@ -37,6 +37,8 @@ namespace SpaceInvaders
             _spriteBatch = new SpriteBatch(GraphicsDevice);
 
             GameSettings.SpriteSheetTexture = Content.Load<Texture2D>("Textures/SpaceAnimation");
+            GameSettings.ArialFont = Content.Load<SpriteFont>(@"Fonts\Arial20");
+
 
             GameSettings.PlayScreen.LoadContent();
             GameSettings.StartScreen.LoadContent();

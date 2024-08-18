@@ -11,37 +11,34 @@ namespace SpaceInvaders.Screens
         public List<GameObject> ScreenObjects;
         public List<GameObject> NewScreenObjects;
 
-        //public SpriteSheet enemySpriteSheet = new SpriteSheetAnimation(
-        //       GameSettings.SpriteSheetTexture,
-        //       new Rectangle(0, 0, 76, 10),
-        //       1, 4, 70, 0, 3);
-
-        //the spritesheets shouldn't just be available to the playscreen
-
         public void MakeSpriteSheets()
         {
 
         }
         public virtual void LoadContent()
         {
-            //List<GameObject> ScreenObjects = new List<GameObject>();
-            List<GameObject> NewScreenObjects = new List<GameObject>();
+            ScreenObjects = new List<GameObject>();
+            NewScreenObjects = new List<GameObject>();
         }
 
         public virtual void Update(GameTime gameTime)
         {
-
-            foreach (GameObject obj in ScreenObjects)
+            if (ScreenObjects != null)
             {
-                if (!obj.IsActive)
-                    continue;
-                obj.Update(gameTime);
+                foreach (GameObject obj in ScreenObjects)
+                {
+                    if (!obj.IsActive)
+                        continue;
+                    obj.Update(gameTime);
+                }
+                AddNewObjects();
+                DestroyObjects();
             }
-            AddNewObjects();
-            DestroyObjects();
+
         }
         public virtual void Draw(SpriteBatch spriteBatch)
         {
+            if (ScreenObjects != null)
             foreach (GameObject obj in ScreenObjects)
                 obj.Draw(spriteBatch);
         }
@@ -58,15 +55,19 @@ namespace SpaceInvaders.Screens
 
         public virtual void AddNewObjects()
         {
-            if (NewScreenObjects.Count > 0)
-            foreach (GameObject obj in NewScreenObjects)
+            if (NewScreenObjects != null)
             {
-                ScreenObjects.Add(obj);
-            }
+                 if (NewScreenObjects.Count > 0)
+                 foreach (GameObject obj in NewScreenObjects)
+                 {
+                     ScreenObjects.Add(obj);
+                 }
             NewScreenObjects.Clear();
+            }
         }
         public virtual void DestroyObjects()
         {
+            if (ScreenObjects != null)
             for (int i = ScreenObjects.Count-1; i > -1; i--)
             {
                 if (!ScreenObjects[i].IsActive)

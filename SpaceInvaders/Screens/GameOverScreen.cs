@@ -1,4 +1,4 @@
-using Microsoft.Xna.Framework;
+﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Input;
 using SpaceInvaders.GameObjects;
 using SpaceInvaders.SpriteStuff;
@@ -12,14 +12,15 @@ namespace SpaceInvaders.Screens
         public override void LoadContent()
         {
             base.LoadContent();
-            ScreenObjects = new List<GameObject>();
-            NewScreenObjects = new List<GameObject>();
+            CreateText();
+        }
 
-            var enemySpriteSheet = new SpriteSheetAnimation(
-                         GameSettings.SpriteSheetTexture,
-                         new Rectangle(0, 0, 76, 10),
-                         1, 4, 4, 0, 3);
+        private void CreateText()
+        {
+            var textVisualisation = new TextVisualisation();
+            textVisualisation.Text = "Thank you so much for-a playing my game";
 
+            ScreenObjects.Add(new TextObject(textVisualisation, new Vector2(3), new Vector2(2)));
         }
     }
 }

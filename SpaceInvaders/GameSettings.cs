@@ -1,4 +1,4 @@
-using Microsoft.Xna.Framework.Graphics;
+﻿using Microsoft.Xna.Framework.Graphics;
 using SpaceInvaders.Screens;
 using System.Collections.Generic;
 
@@ -26,6 +26,7 @@ namespace SpaceInvaders
         public static Screen ActiveScreen = null;
 
         public static Texture2D SpriteSheetTexture = null;
+        public static SpriteFont ArialFont;
 
     }
 }
