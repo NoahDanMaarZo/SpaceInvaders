@@ -1,4 +1,4 @@
-﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using SpaceInvaders.Screens;
@@ -42,7 +42,7 @@ namespace SpaceInvaders
             GameSettings.StartScreen.LoadContent();
             GameSettings.GameOverScreen.LoadContent();
 
-            GameSettings.ActiveScreen = GameSettings.PlayScreen;
+            GameSettings.ActiveScreen = GameSettings.StartScreen;
 
         }
 

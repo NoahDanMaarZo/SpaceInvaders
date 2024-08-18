@@ -5,7 +5,7 @@ using System.Windows.Forms;
 
 namespace SpaceInvaders.GameObjects
 {
-    internal class Invader : GameObject
+    public class Invader : GameObject
     {
         public Vector2 Velocity;
 

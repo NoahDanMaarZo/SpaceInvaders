@@ -1,11 +1,11 @@
-﻿using Microsoft.Xna.Framework.Graphics;
+using Microsoft.Xna.Framework.Graphics;
 using SpaceInvaders.Screens;
 using System.Collections.Generic;
 
 namespace SpaceInvaders
 {
 
-    public class GameSettings
+    public static class GameSettings
     {
         public const int ScreenWidth = 1200;
         public const int ScreenHeight = 800;
@@ -16,7 +16,8 @@ namespace SpaceInvaders
 
         public static float InvaderSpeed => 1f;
         public static float TurretSpeed => 6f;
-        public static float MissileSpeed => 4f;
+        public static float MissileSpeed => 16f;
+
 
         public static StartScreen StartScreen = new StartScreen();
         public static PlayScreen PlayScreen = new PlayScreen();

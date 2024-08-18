@@ -1,4 +1,4 @@
-﻿using SpaceInvaders.GameObjects;
+using SpaceInvaders.GameObjects;
 using SpaceInvaders.SpriteStuff;
 using System.Collections.Generic;
 using Microsoft.Xna.Framework;
@@ -9,6 +9,7 @@ namespace SpaceInvaders.Screens
     {
         public override void LoadContent()
         {
+            base.LoadContent();
             ScreenObjects = new List<GameObject>();
             NewScreenObjects = new List<GameObject>();
 
@@ -33,15 +34,8 @@ namespace SpaceInvaders.Screens
             {
                 for (int row = 0; row < 3; row++)
                 {
-                    var enemySpriteSheet = new SpriteSheetAnimation(
-                          GameSettings.SpriteSheetTexture,
-                          new Rectangle(0, 0, 76, 10),
-                          1, 4, 4, 0, 3);
 
-                    GameObject newInvader = new Invader(enemySpriteSheet,
-                        blockPosition,
-                        new Vector2(GameSettings.InvaderSize), 
-                        new Vector2(GameSettings.InvaderSpeed, 0));
+                    var newInvader = GameObjectFactory.CreateInvader(blockPosition, GameSettings.InvaderSize, GameSettings.InvaderSpeed);
                     newInvader.Position.X += column * 2 * newInvader.GetPixelSize().X;
                     newInvader.Position.Y += row    * 2 * newInvader.GetPixelSize().Y;
                     ScreenObjects.Add(newInvader);
@@ -56,6 +50,7 @@ namespace SpaceInvaders.Screens
             SpaceInvaders.ShouldTurnAround = false;
 
             // Loop over Invaders
+            if (ScreenObjects != null)
             foreach (var obj in ScreenObjects)
             {
                 if (obj is Invader && 
@@ -67,8 +62,13 @@ namespace SpaceInvaders.Screens
                 }
 
             }
-            
-            if (!ThereAreInvaders()) ScreenObjects.Clear();
+            if (ScreenObjects != null)
+            if (!ThereAreInvaders())
+            {
+               ScreenObjects.Clear();
+                    GameSettings.ActiveScreen = new GameOverScreen();
+                    GameSettings.ActiveScreen.LoadContent();
+            }
 
         }
         public override void SpawnMissileAt(Vector2 pos)
@@ -78,6 +78,7 @@ namespace SpaceInvaders.Screens
 
         private bool ThereAreInvaders()
         {
+            if (ScreenObjects != null)
             foreach(var obj in ScreenObjects)
             {
                 if (obj is Invader) return true;

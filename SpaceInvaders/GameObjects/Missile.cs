@@ -25,10 +25,12 @@ namespace SpaceInvaders.GameObjects
                     gameObject.IsActive = false;
                     this.IsActive = false;
                 }
+                if (Position.Y < -GetPixelSize().Y)
+                    this.IsActive = false;
             }
-            
 
-            Position.Y -= 2;
+
+            Position.Y -= GameSettings.MissileSpeed;
         }
     }
 }
