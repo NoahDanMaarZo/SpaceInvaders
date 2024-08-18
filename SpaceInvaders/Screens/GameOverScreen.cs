@@ -1,9 +1,6 @@
 ﻿using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Input;
 using SpaceInvaders.GameObjects;
 using SpaceInvaders.SpriteStuff;
-using System;
-using System.Collections.Generic;
 
 namespace SpaceInvaders.Screens
 {

@@ -3,8 +3,6 @@ using Microsoft.Xna.Framework.Input;
 using SpaceInvaders.GameObjects;
 using SpaceInvaders.SpriteStuff;
 using System;
-using System.Collections.Generic;
-using Microsoft.Xna.Framework.Graphics;
 
 
 namespace SpaceInvaders.Screens

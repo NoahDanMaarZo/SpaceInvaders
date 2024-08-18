@@ -11,10 +11,6 @@ namespace SpaceInvaders.Screens
         public List<GameObject> ScreenObjects;
         public List<GameObject> NewScreenObjects;
 
-        public void MakeSpriteSheets()
-        {
-
-        }
         public virtual void LoadContent()
         {
             ScreenObjects = new List<GameObject>();
@@ -23,22 +19,17 @@ namespace SpaceInvaders.Screens
 
         public virtual void Update(GameTime gameTime)
         {
-            if (ScreenObjects != null)
+            foreach (GameObject obj in ScreenObjects)
             {
-                foreach (GameObject obj in ScreenObjects)
-                {
-                    if (!obj.IsActive)
-                        continue;
-                    obj.Update(gameTime);
-                }
-                AddNewObjects();
-                DestroyObjects();
+                if (!obj.IsActive)
+                    continue;
+                obj.Update(gameTime);
             }
-
+            AddNewObjects();
+            DestroyObjects();
         }
         public virtual void Draw(SpriteBatch spriteBatch)
         {
-            if (ScreenObjects != null)
             foreach (GameObject obj in ScreenObjects)
                 obj.Draw(spriteBatch);
         }
@@ -55,20 +46,16 @@ namespace SpaceInvaders.Screens
 
         public virtual void AddNewObjects()
         {
-            if (NewScreenObjects != null)
-            {
-                 if (NewScreenObjects.Count > 0)
-                 foreach (GameObject obj in NewScreenObjects)
-                 {
-                     ScreenObjects.Add(obj);
-                 }
+            if (NewScreenObjects.Count > 0)
+                foreach (GameObject obj in NewScreenObjects)
+                {
+                    ScreenObjects.Add(obj);
+                }
             NewScreenObjects.Clear();
-            }
         }
         public virtual void DestroyObjects()
         {
-            if (ScreenObjects != null)
-            for (int i = ScreenObjects.Count-1; i > -1; i--)
+            for (int i = ScreenObjects.Count - 1; i > -1; i--)
             {
                 if (!ScreenObjects[i].IsActive)
                 {

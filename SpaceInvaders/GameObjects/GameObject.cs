@@ -7,7 +7,6 @@ namespace SpaceInvaders.GameObjects
     public abstract class GameObject
     {
         public IVisualisation Visualisation;
-        public SpriteFont Font;
 
         public Vector2 Position;
         public Vector2 Scale;

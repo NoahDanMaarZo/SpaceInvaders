@@ -1,6 +1,5 @@
 ﻿using Microsoft.Xna.Framework.Graphics;
 using SpaceInvaders.Screens;
-using System.Collections.Generic;
 
 namespace SpaceInvaders
 {
