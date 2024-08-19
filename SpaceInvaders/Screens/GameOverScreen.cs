@@ -17,7 +17,8 @@ namespace SpaceInvaders.Screens
             var textVisualisation = new TextVisualisation();
             textVisualisation.Text = "Thank you so much for-a playing my game";
 
-            ScreenObjects.Add(new TextObject(textVisualisation, new Vector2(3), new Vector2(2)));
+            ScreenObjects.Add(new TextObject(textVisualisation, 
+                new Vector2(GameSettings.ScreenWidth / 6, GameSettings.ScreenHeight / 2 + 50), new Vector2(1.6f)));
         }
     }
 }

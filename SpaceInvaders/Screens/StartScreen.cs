@@ -3,7 +3,7 @@ using Microsoft.Xna.Framework.Input;
 using SpaceInvaders.GameObjects;
 using SpaceInvaders.SpriteStuff;
 using System;
-
+using System.Diagnostics.Eventing.Reader;
 
 namespace SpaceInvaders.Screens
 {
@@ -15,7 +15,7 @@ namespace SpaceInvaders.Screens
         {
             base.LoadContent();
 
-            CreateInvaders();
+            CreateInvaders(10);
             CreateText();
         }
 
@@ -24,15 +24,31 @@ namespace SpaceInvaders.Screens
             var textVisualisation = new TextVisualisation();
             textVisualisation.Text = "Press space to play :-)";
 
-            ScreenObjects.Add(new TextObject(textVisualisation, new Vector2(3), new Vector2(2)));
+            ScreenObjects.Add(new TextObject(textVisualisation,
+                new Vector2(GameSettings.ScreenWidth / 3, GameSettings.ScreenHeight / 2 + 50), new Vector2(1.5f)));
         }
 
-        private void CreateInvaders()
+        private void CreateInvaders(int amount)
         {
-            for (int i = 0; i < 10; i++)
+            for (int i = 0; i < amount; i++)
             {
-                var newInvader = GameObjectFactory.CreateInvader(new Vector2(random.Next(GameSettings.ScreenWidth),
-                     random.Next(GameSettings.ScreenHeight)), GameSettings.InvaderSize, 0);
+                bool overlaps = true;
+                var newInvader = GameObjectFactory.CreateInvader(new Vector2(), GameSettings.InvaderSize, 0);
+
+                while (overlaps)
+                {
+                    newInvader.Position = new Vector2(random.Next(GameSettings.ScreenWidth - newInvader.GetPixelSize().X),
+                     random.Next(GameSettings.ScreenHeight / 2));
+                    overlaps = false;
+                    foreach (GameObject obj in ScreenObjects)
+                    {
+                        if (obj.GetBoundingRect().Intersects(newInvader.GetBoundingRect()))
+                        {
+                            overlaps = true;
+                            break;
+                        }
+                    }
+                }
                 ScreenObjects.Add(newInvader);
             }
         }
